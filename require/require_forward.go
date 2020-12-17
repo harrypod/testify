@@ -6,7 +6,7 @@
 package require
 
 import (
-	assert "github.com/stretchr/testify/assert"
+	assert "github.com/harrypod/testify/assert"
 	http "net/http"
 	url "net/url"
 	time "time"
