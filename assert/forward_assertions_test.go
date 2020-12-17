@@ -154,30 +154,6 @@ func TestNotEqualWrapper(t *testing.T) {
 	}
 }
 
-func TestNotEqualValuesWrapper(t *testing.T) {
-
-	assert := New(new(testing.T))
-
-	if !assert.NotEqualValues("Hello World", "Hello World!") {
-		t.Error("NotEqualValues should return true")
-	}
-	if !assert.NotEqualValues(123, 1234) {
-		t.Error("NotEqualValues should return true")
-	}
-	if !assert.NotEqualValues(123.5, 123.55) {
-		t.Error("NotEqualValues should return true")
-	}
-	if !assert.NotEqualValues([]byte("Hello World"), []byte("Hello World!")) {
-		t.Error("NotEqualValues should return true")
-	}
-	if !assert.NotEqualValues(nil, new(AssertionTesterConformingObject)) {
-		t.Error("NotEqualValues should return true")
-	}
-	if assert.NotEqualValues(10, uint(10)) {
-		t.Error("NotEqualValues should return false")
-	}
-}
-
 func TestContainsWrapper(t *testing.T) {
 
 	assert := New(new(testing.T))
@@ -236,13 +212,13 @@ func TestConditionWrapper(t *testing.T) {
 
 func TestDidPanicWrapper(t *testing.T) {
 
-	if funcDidPanic, _, _ := didPanic(func() {
+	if funcDidPanic, _ := didPanic(func() {
 		panic("Panic!")
 	}); !funcDidPanic {
 		t.Error("didPanic should return true")
 	}
 
-	if funcDidPanic, _, _ := didPanic(func() {
+	if funcDidPanic, _ := didPanic(func() {
 	}); funcDidPanic {
 		t.Error("didPanic should return false")
 	}
